@@ -11,7 +11,7 @@ The library is tested in (and on):
 
 * Android chrome & browser
 * iPhone Safari
-* Windows Mobile 8.2
+* Windows Mobile 8.1 - IE
 
 ## Usage
 MobMenu needs minimal setup - the minimum amount of CSS, HTML and JavaScript is as follows;
