@@ -1,0 +1,39 @@
+/* MOBILE OPTIONS */
+body.open-left{
+	overflow: hidden;
+}
+	body.open-left .mobile-content{
+		margin-left:75%;
+		position: fixed;
+	}
+	body.open-left .mobile-left{
+		overflow: auto;
+		left:0px;
+	}
+	body.open-left .ui-block{
+		position: absolute;
+		left:0px;
+		right:0px;
+		top:0px;
+		bottom:0px;
+		z-index: 999999;
+	}
+
+/* LEFT SECTION (HIDE ON START) */
+.mobile-left{
+	position: fixed;
+	overflow-y:auto;
+	top:0px;
+	width: 75%;
+	height: 100%;
+}
+.mobile-left{
+	left:-75%;
+	transition: left 0.5s;
+	background-color: #EEE;
+}
+.mobile-content{
+	transition: margin-left 0.5s;
+	width:100%;
+	position: relative;
+}

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!--[if IE]>
+			<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<![endif]-->
+        <title>MobMenu - demo site</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+		<!--[if lt IE 9]>
+		  <script type='text/javascript' src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		  <script type='text/javascript' src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.js"></script>
+		<![endif]-->
+		<link rel="stylesheet" type="text/css" href="./styles/mobMenu.css" />
+		<style type="text/css">
+			body{
+				font-size: 14px;
+				margin:0;
+				font-family: verdana;
+			}
+			#mobile-nav-toggle{
+				width: 30px;
+				height: 30px;
+				background-color: #999;
+			}
+			.page-container{
+				padding: 20px 10px 10px;
+			}
+			header .desktop-header{
+				background-color: red;
+				color:#FFF;
+				padding:10px;
+			}
+				header .desktop-header h1{
+					margin: 0 0 10px 0;
+				}
+				header .desktop-header p{
+					margin: 0 0 10px 0;
+				}
+			header .mobile-header{
+				padding:10px;
+				background-color: #DDD;
+			}
+			@media(max-width: 767px){
+				.desktop-header{
+					display: none;
+				}
+			}
+			@media(min-width: 768px){
+				.mobile-header{
+					display: none;
+				}
+			}
+			h1{
+				margin: 0px 0 15px 0;
+				font-size: 30px;
+			}
+			h2{
+				font-size: 25px;
+				margin: 20px 0 10px 0;
+			}
+			p{
+				margin: 0 0 15px;
+			}
+			.lead{
+				font-size: 17px;
+				font-style: italic;
+			}
+			.code{
+				background-color: #f5f5f5;
+				color:#333333;
+				padding:1px 10px;
+				border: 1px solid rgba(0, 0, 0, 0.15);
+				overflow-x:auto;
+			}
+
+		</style>
+    </head>
+    <body>
+    	<div class="mobile-content">
+    		<div class="ui-block"></div>
+	    	<header>
+				<div class="desktop-header">
+					<h1>Make your window smaller..</h1>
+					<p>This demo is only presented when viewport is smaller then 678px</p>
+				</div>
+				<div class="mobile-header">
+					<div id="mobile-nav-toggle"></div>
+				</div>				
+	    	</header>
+    		<div class="page-container">
+    			<h1>MobMenu</h1>
+    			<p class="lead">We struggled through a lot of projects with different ways of creating mobile menus that workt as we wanted. We decided to create a way of doing it, this is it.</p>
+    			<p>This is an example, offcourse you can add an extra menu to the right with the same logic. And a tip if you want to use a fixed header in mobile is to locate the mobile-header in a relativ positioned container. Since the fixed header stopps working in Windows mobile if it's located in a fixed container.</p>
+    			<h2>Structure of html</h2>
+    			<div class="code">
+<pre>
+&lt;body&gt;
+	&lt;div class="mobile-content"&gt;
+		&lt;div class="ui-block">&lt;/div&gt;
+		&lt;header&gt;
+			&lt;div class="desktop-header"&gt;
+				&lt;h1&gt;Make your window smaller..&lt;/h1&gt;
+				&lt;p&gt;This demo is only presented when viewport is smaller then 678px&lt;/p&gt;
+			&lt;/div&gt;
+			&lt;div class="mobile-header"&gt;
+				&lt;div id="mobile-nav-toggle"&gt;&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/header&gt;
+		&lt;div class="page-container"&gt;
+			{PAGE HTML}
+		&lt;/div&gt;
+	&lt;/div&gt;
+	&lt;div class="mobile-left"&gt;
+		{MENU HTML}
+	&lt;/div&gt;
+&lt;/body&gt;
+</pre>
+    			</div>
+    			<h2>CSS</h2>
+    			<div class="code">
+<pre>
+body.open-left{
+	overflow: hidden;
+}
+	body.open-left .mobile-content{
+		margin-left:75%;
+		position: fixed;
+	}
+	body.open-left .mobile-left{
+		overflow: auto;
+		left:0px;
+	}
+	body.open-left .ui-block{
+		position: absolute;
+		left:0px;
+		right:0px;
+		top:0px;
+		bottom:0px;
+		z-index: 999999;
+	}
+
+/* LEFT SECTION (HIDDEN ON START) */
+.mobile-left{
+	position: fixed;
+	overflow-y:auto;
+	top:0px;
+	width: 75%;
+	height: 100%;
+}
+.mobile-left{
+	left:-75%;
+	transition: left 0.5s;
+	background-color: #EEE;
+}
+.mobile-content{
+	transition: margin-left 0.5s;
+	width:100%;
+	position: relative;
+}
+</pre>
+    			</div>
+    			<h2>And the small JavaScript</h2>
+    			<div class="code">
+<pre>
+document.querySelector('.ui-block').addEventListener('click', function (e) {
+	e.stopPropagation();
+	e.preventDefault();
+	document.body.className = document.body.className.replace('open-left', '');
+});
+var menu_toggle_button = document.getElementById('mobile-nav-toggle');
+menu_toggle_button.onclick = function() {
+	document.querySelector('body').classList.add('open-left');
+}
+</pre>
+    			</div>
+    		</div>
+		</div>
+		<div class="mobile-left">
+			<div style="margin:20px;">
+				<h2>Mobile menu content</h2>
+				<ul>
+					<li>
+						<a href="#">Links in a list</a>
+					</li>
+					<li>
+						<a href="#">Links in a list</a>
+					</li>
+					<li>
+						<a href="#">Links in a list</a>
+					</li>
+					<li>
+						<a href="#">Links in a list</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	<script type="text/javascript">
+		document.querySelector('.ui-block').addEventListener('click', function (e) {
+			e.stopPropagation();
+			e.preventDefault();
+			document.body.className = document.body.className.replace('open-left', '');
+		});
+		//OPEN MOBILE MENU
+		var menu_toggle_button = document.getElementById('mobile-nav-toggle');
+		menu_toggle_button.onclick = function() {
+			document.querySelector('body').classList.add('open-left');
+		}
+	</script>
+    </body>
+</html>
