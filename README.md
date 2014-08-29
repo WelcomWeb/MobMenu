@@ -17,26 +17,23 @@ The library is tested in (and on):
 MobMenu needs minimal setup - the minimum amount of CSS, HTML and JavaScript is as follows;
 
 ### HTML
-  <body>
-  	<div class="mobile-content">
-  		<div class="ui-block"></div>
-  		<header>
-  			<div class="desktop-header">
-  				<h1>Make your window smaller..</h1>
-  				<p>This demo is only presented when viewport is smaller then 678px</p>
-  			</div>
-  			<div class="mobile-header">
-  				<div id="mobile-nav-toggle"></div>
-  			</div>
-  		</header>
-  		<div class="page-container">
-  			{PAGE HTML}
-  		</div>
-  	</div>
-  	<div class="mobile-left">
-  		{MENU HTML}
-  	</div>
-  </body>
+	<div class="mobile-content">
+		<div class="ui-block"></div>
+		<header>
+			<div class="desktop-header">
+				{DESKTOP HEADER}
+			</div>
+			<div class="mobile-header">
+				<div id="mobile-nav-toggle"></div>
+			</div>
+		</header>
+		<div class="page-container">
+			{PAGE HTML}
+		</div>
+	</div>
+	<div class="mobile-left">
+		{MENU HTML}
+	</div>
 
 ### CSS
   body.open-left{
