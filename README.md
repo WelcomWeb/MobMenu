@@ -17,63 +17,64 @@ The library is tested in (and on):
 MobMenu needs minimal setup - the minimum amount of CSS, HTML and JavaScript is as follows;
 
 ### HTML
-	<div class="mobile-content">
-		<div class="ui-block"></div>
-		<header>
-			<div class="desktop-header">
-				{DESKTOP HEADER}
-			</div>
-			<div class="mobile-header">
-				<div id="mobile-nav-toggle"></div>
-			</div>
-		</header>
-		<div class="page-container">
-			{PAGE HTML}
+<div class="mobile-content">
+	<div class="ui-block"></div>
+	<header>
+		<div class="desktop-header">
+			{DESKTOP HEADER}
 		</div>
+		<div class="mobile-header">
+			<div id="mobile-nav-toggle"></div>
+			{MOBILE HEADER}
+		</div>
+	</header>
+	<div class="page-container">
+		{PAGE HTML}
 	</div>
-	<div class="mobile-left">
-		{MENU HTML}
-	</div>
+</div>
+<div class="mobile-left">
+	{MENU HTML}
+</div>
 
 ### CSS
-  body.open-left{
-  	overflow: hidden;
-  }
-  	body.open-left .mobile-content{
-  		margin-left:75%;
-  		position: fixed;
-  	}
-  	body.open-left .mobile-left{
-  		overflow: auto;
-  		left:0px;
-  	}
-  	body.open-left .ui-block{
-  		position: absolute;
-  		left:0px;
-  		right:0px;
-  		top:0px;
-  		bottom:0px;
-  		z-index: 999999;
-  	}
-  
-  /* LEFT SECTION (HIDDEN ON START) */
-  .mobile-left{
+body.open-left{
+  overflow: hidden;
+}
+  body.open-left .mobile-content{
+  	margin-left:75%;
   	position: fixed;
-  	overflow-y:auto;
+  }
+  body.open-left .mobile-left{
+  	overflow: auto;
+  	left:0px;
+  }
+  body.open-left .ui-block{
+  	position: absolute;
+  	left:0px;
+  	right:0px;
   	top:0px;
-  	width: 75%;
-  	height: 100%;
+  	bottom:0px;
+  	z-index: 999999;
   }
-  .mobile-left{
-  	left:-75%;
-  	transition: left 0.5s;
-  	background-color: #EEE;
-  }
-  .mobile-content{
-  	transition: margin-left 0.5s;
-  	width:100%;
-  	position: relative;
-  }
+
+/* LEFT SECTION (HIDDEN ON START) */
+.mobile-left{
+  position: fixed;
+  overflow-y:auto;
+  top:0px;
+  width: 75%;
+  height: 100%;
+}
+.mobile-left{
+  left:-75%;
+  transition: left 0.5s;
+  background-color: #EEE;
+}
+.mobile-content{
+  transition: margin-left 0.5s;
+  width:100%;
+  position: relative;
+}
 
 #### JavaScript
   document.querySelector('.ui-block').addEventListener('click', function (e) {
